@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 10:00:42 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/01 15:03:41 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/01 17:08:20 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-
 
 /* ft_printf functions */
 int		ft_printf(const char *f, ...);
