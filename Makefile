@@ -8,14 +8,18 @@ SRC		=	main.c
 PARSDIR	=	src/parser/
 PARSSRC	=	parser.c
 
+LEXDIR	=	src/lexer/
+LEXSRC	=	lexer.c
+
 OBJDIR	=	obj/
 OBJ		=	$(addprefix $(OBJDIR), $(SRC:%.c=%.o))
 PARSOBJ	=	$(addprefix $(OBJDIR), $(PARSSRC:%.c=%.o))
+LEXOBJ	=	$(addprefix $(OBJDIR), $(LEXSRC:%.c=%.o))
 
 LIBFT	=	libft/libft.a
 
-$(NAME):	$(LIBFT) $(OBJ) $(PARSOBJ)
-			$(CC) $(CFLAGS) $(LIBFT) $(OBJ) $(PARSOBJ) -o $(NAME)
+$(NAME):	$(LIBFT) $(OBJ) $(PARSOBJ) $(LEXOBJ)
+			$(CC) $(CFLAGS) $(LIBFT) $(OBJ) $(PARSOBJ) $(LEXOBJ) -o $(NAME) -lreadline
 
 all:		$(NAME)
 
@@ -27,6 +31,10 @@ obj/%.o:	$(SRCDIR)%.c
 			$(CC) $(CFLAGS) -c $< -o $@
 
 obj/%.o:	$(PARSDIR)%.c
+			@mkdir -p obj
+			$(CC) $(CFLAGS) -c $< -o $@
+
+obj/%.o:	$(LEXDIR)%.c
 			@mkdir -p obj
 			$(CC) $(CFLAGS) -c $< -o $@
 

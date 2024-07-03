@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 09:02:21 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/03 09:28:13 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/03 10:21:30 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	parser(void)
 {
-	printf("Parser function here");
+	ft_printf("Parser function here\n");
 }
