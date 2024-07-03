@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/01 14:01:00 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/03 09:17:53 by nnagel           ###   ########.fr       */
+/*   Created: 2024/07/03 09:02:21 by nnagel            #+#    #+#             */
+/*   Updated: 2024/07/03 09:28:13 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
-int	main(int argc, char **argv)
+void	parser(void)
 {
-	if (argc >= 2)
-		return (1);
-	(void)argv;
-	parser();
-	ft_printf("argc: %d\n", argc);
-	return (0);
+	printf("Parser function here");
 }

@@ -5,13 +5,17 @@ CFLAGS	=	-Wall -Wextra -Werror
 SRCDIR	=	src/
 SRC		=	main.c
 
+PARSDIR	=	src/parser/
+PARSSRC	=	parser.c
+
 OBJDIR	=	obj/
 OBJ		=	$(addprefix $(OBJDIR), $(SRC:%.c=%.o))
+PARSOBJ	=	$(addprefix $(OBJDIR), $(PARSSRC:%.c=%.o))
 
 LIBFT	=	libft/libft.a
 
-$(NAME):	$(LIBFT) $(OBJ)
-			$(CC) $(CFLAGS) $(LIBFT) $(OBJ) -o $(NAME)
+$(NAME):	$(LIBFT) $(OBJ) $(PARSOBJ)
+			$(CC) $(CFLAGS) $(LIBFT) $(OBJ) $(PARSOBJ) -o $(NAME)
 
 all:		$(NAME)
 
@@ -19,6 +23,10 @@ $(LIBFT):
 			cd libft && make
 
 obj/%.o:	$(SRCDIR)%.c
+			@mkdir -p obj
+			$(CC) $(CFLAGS) -c $< -o $@
+
+obj/%.o:	$(PARSDIR)%.c
 			@mkdir -p obj
 			$(CC) $(CFLAGS) -c $< -o $@
 
