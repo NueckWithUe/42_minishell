@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:00 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/03 10:20:09 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/03 12:29:21 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	char *ret;
+	char	*ret;
 
 	ret = NULL;
 	if (argc >= 2)
@@ -24,6 +24,5 @@ int	main(int argc, char **argv)
 	while (ret && ret[0] == '\0')
 		ret = readline(">> ");
 	lexer(ret);
-	ft_printf("%s\n", ret);
 	return (0);
 }

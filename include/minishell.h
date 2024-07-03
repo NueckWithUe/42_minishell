@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:09 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/03 10:05:57 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/03 12:29:52 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,9 @@
 
 void	parser(void);
 void	lexer(char *input);
+
+/* lexer utils */
+int		ft_get_wc(char *str, char delimiter);
+char	*ft_strtok(char *str, char delimiter);
 
 #endif

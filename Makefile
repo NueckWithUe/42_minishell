@@ -9,7 +9,8 @@ PARSDIR	=	src/parser/
 PARSSRC	=	parser.c
 
 LEXDIR	=	src/lexer/
-LEXSRC	=	lexer.c
+LEXSRC	=	lexer.c \
+			lexer_utils.c
 
 OBJDIR	=	obj/
 OBJ		=	$(addprefix $(OBJDIR), $(SRC:%.c=%.o))
