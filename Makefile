@@ -10,12 +10,12 @@ OBJ		=	$(addprefix $(OBJDIR), $(SRC:%.c=%.o))
 
 LIBFT	=	libft/libft.a
 
-$(NAME):	$(OBJ) | lft
+$(NAME):	$(LIBFT) $(OBJ)
 			$(CC) $(CFLAGS) $(LIBFT) $(OBJ) -o $(NAME)
 
 all:		$(NAME)
 
-lft:
+$(LIBFT):
 			cd libft && make
 
 obj/%.o:	$(SRCDIR)%.c
@@ -32,4 +32,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all lft clean fclean re
+.PHONY:		all clean fclean re
