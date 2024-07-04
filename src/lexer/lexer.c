@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:02:37 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/03 13:06:29 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/04 09:28:02 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	free_tokens(char **tokens)
 	int	i;
 
 	i = 0;
-	while (ft_strncmp(tokens[i], "EOFToken", 8) != 0)
+	while (tokens[i])
 	{
 		free(tokens[i]);
 		i++;
@@ -34,12 +34,14 @@ static char	**ft_tokenize(char *input, char delimiter)
 	i = 0;
 	wc = ft_get_wc(input, delimiter);
 	tokens = ft_calloc(wc + 2, sizeof(char *));
+	if (!tokens)
+		return (NULL);
 	while (i < wc)
 	{
 		tokens[i] = ft_strtok(input, delimiter);
 		i++;
 	}
-	tokens[wc] = "EOFToken";
+	tokens[wc] = ft_strdup("EOFToken");
 	tokens[wc + 1] = NULL;
 	return (tokens);
 }

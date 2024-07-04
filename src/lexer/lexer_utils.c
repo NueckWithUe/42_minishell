@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 11:15:00 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/03 11:43:26 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/03 13:36:14 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ char	*ft_strtok(char *str, char delimiter)
 
 	j = 0;
 	token = ft_calloc(get_len(str, delimiter), sizeof(char));
+	if (!token)
+		return (NULL);
 	while (str[i] == delimiter)
 		i++;
 	while (str[i] && str[i] != delimiter)
