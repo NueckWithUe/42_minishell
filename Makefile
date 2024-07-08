@@ -15,16 +15,20 @@ LEXSRC	=	lexer.c \
 PIPDIR	=	src/pipes/
 PIPSRC	=	pipes.c
 
+UTILDIR	=	src/utils/
+UTILSRC	=	utils.c
+
 OBJDIR	=	obj/
 OBJ		=	$(addprefix $(OBJDIR), $(SRC:%.c=%.o))
 PARSOBJ	=	$(addprefix $(OBJDIR), $(PARSSRC:%.c=%.o))
 LEXOBJ	=	$(addprefix $(OBJDIR), $(LEXSRC:%.c=%.o))
 PIPOBJ	=	$(addprefix $(OBJDIR), $(PIPSRC:%.c=%.o))
+UTILOBJ	=	$(addprefix $(OBJDIR), $(UTILSRC:%.c=%.o))
 
 LIBFT	=	libft/libft.a
 
-$(NAME):	$(LIBFT) $(OBJ) $(PARSOBJ) $(LEXOBJ) $(PIPOBJ)
-			$(CC) $(CFLAGS) $(LIBFT) $(OBJ) $(PARSOBJ) $(LEXOBJ) $(PIPOBJ) -o $(NAME) -lreadline
+$(NAME):	$(LIBFT) $(OBJ) $(PARSOBJ) $(LEXOBJ) $(PIPOBJ) $(UTILOBJ)
+			$(CC) $(CFLAGS) $(LIBFT) $(OBJ) $(PARSOBJ) $(LEXOBJ) $(PIPOBJ) $(UTILOBJ) -o $(NAME) -lreadline
 
 all:		$(NAME)
 
@@ -44,6 +48,10 @@ obj/%.o:	$(LEXDIR)%.c
 			$(CC) $(CFLAGS) -c $< -o $@
 
 obj/%.o:	$(PIPDIR)%.c
+			@mkdir -p obj
+			$(CC) $(CFLAGS) -c $< -o $@
+
+obj/%.o:	$(UTILDIR)%.c
 			@mkdir -p obj
 			$(CC) $(CFLAGS) -c $< -o $@
 
