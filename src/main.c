@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:00 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/05 23:46:52 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/08 08:09:43 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,19 @@ char	**the_lexer(char *input)
 int	main(int argc, char **argv)
 {
 	char	*input;
+	char	**tokens;
 
 	input = NULL;
 	if (argc >= 2)
 		return (1);
 	(void)argv;
-	input = readline(">> ");
-	// lexer(input);
-	char **tokens;
-	tokens = the_lexer(input);
-	if (ft_strchr(input, '|'))
-		handle_pipe(tokens);
+	while (1)
+	{
+		input = readline(">> ");
+		// lexer(input);
+		tokens = the_lexer(input);
+		if (ft_strchr(input, '|'))
+			handle_pipe(tokens);
+	}
 	return (0);
 }
