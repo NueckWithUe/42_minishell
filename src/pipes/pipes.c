@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 22:36:24 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/06 01:58:00 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/06 03:20:53 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,6 @@ static int	ft_size_after_pipe(char **arr)
 	return (j);
 }
 
-static void	ft_print_list(char **list)
-{
-	int i;
-
-	i = 0;
-	while (list[i])
-	{
-		ft_printf("%s\n", list[i]);
-		i++;
-	}
-}
-
 void	handle_pipe(char **tokens)
 {
 	int		pipefd[2];
@@ -96,7 +84,6 @@ void	handle_pipe(char **tokens)
 	foreground_pipe = malloc(sizeof(char *) * ft_size_before_pipe(tokens) + 1);
 	background_pipe = malloc(sizeof(char *) * ft_size_after_pipe(tokens) + 1);
 	i = 0;
-	ft_printf("%d\n", ft_size_before_pipe(tokens));
 	while (!ft_strcomp(tokens[i], "|"))
 	{
 		foreground_pipe[i] = ft_strdup(tokens[i]);
@@ -112,12 +99,6 @@ void	handle_pipe(char **tokens)
 		j++;
 	}
 	background_pipe[j + 1] = NULL;
-
-	ft_printf("Foreground pipe:\n");
-	ft_print_list(foreground_pipe);
-	ft_printf("Background pipe:\n");
-	ft_print_list(background_pipe);
-
 	index_after_pipe = ft_get_index(tokens);
 	if (pipe(pipefd) == -1)
 	{
