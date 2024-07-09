@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:00 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/08 13:34:17 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/09 11:46:49 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,11 @@ char	**the_lexer(char *input)
 
 int	main(int argc, char **argv)
 {
+	int		ret;
 	char	*input;
 	char	**tokens;
 
+	ret = 0;
 	input = NULL;
 	if (argc >= 2)
 		return (1);
@@ -80,6 +82,10 @@ int	main(int argc, char **argv)
 		if (ft_strchr(input, '|'))
 			handle_pipe(tokens);
 		free_tokens(tokens);
+		if (ft_strcmp(tokens[0], "cd") && ft_strcmp(tokens[1], "EOFToken"))
+			ret = cd(NULL);
+		if (ret == 1)
+			break ;
 	}
 	return (0);
 }
