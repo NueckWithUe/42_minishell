@@ -6,24 +6,11 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:02:37 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/04 09:28:02 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/09 12:18:04 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-static void	free_tokens(char **tokens)
-{
-	int	i;
-
-	i = 0;
-	while (tokens[i])
-	{
-		free(tokens[i]);
-		i++;
-	}
-	free(tokens);
-}
 
 static char	**ft_tokenize(char *input, char delimiter)
 {
@@ -46,15 +33,18 @@ static char	**ft_tokenize(char *input, char delimiter)
 	return (tokens);
 }
 
-void	lexer(char *input)
+char	**lexer(char *input)
 {
 	char	**tokens;
-	int		i;
 
-	i = 0;
+	tokens = NULL;
 	if (input[0] == '\0')
-		return ;
+	{
+		tokens = malloc(sizeof(char *));
+		tokens[0] = ft_strdup("EOFToken");
+		tokens[1] = NULL;
+		return (tokens);
+	}
 	tokens = ft_tokenize(input, ' ');
-	parser(tokens);
-	free_tokens(tokens);
+	return (tokens);
 }

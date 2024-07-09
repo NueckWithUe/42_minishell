@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:09 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/09 11:41:43 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/09 12:17:20 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # include "libft.h"
 
 void	parser(char **tokens);
-void	lexer(char *input);
+char	**lexer(char *input);
 
 /* lexer utils */
 int		ft_get_wc(char *str, char delimiter);
