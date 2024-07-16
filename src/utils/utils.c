@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:15:42 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/08 13:31:37 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/16 09:06:38 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 /*
 compares for equal strings
 returns 1 if strings are equal*/
-int	ft_strcmp(char *str1, char *str2)
+int	ft_strcomp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
-	if (!str1 || !str2)
+	if (ft_strlen(s1) != ft_strlen(s2))
 		return (0);
-	while (str1[i] && str2[i])
+	while (s1[i] && s2[i])
 	{
-		if (str1[i] != str2[i])
+		if (s1[i] != s2[i])
 			return (0);
 		i++;
 	}

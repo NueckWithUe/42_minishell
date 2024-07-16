@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:09 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/10 13:48:16 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/16 09:06:53 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ void	handle_pipe(char **tokens);
 int		cd(char *path);
 
 /* general utils */
-int		ft_strcmp(char *str1, char *str2);
+int		ft_strcomp(char *str1, char *str2);
 #endif
