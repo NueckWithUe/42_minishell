@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:15:42 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/16 09:06:38 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/17 11:43:43 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,14 @@ int	ft_strcomp(char *s1, char *s2)
 		i++;
 	}
 	return (1);
+}
+
+int	array_size(char **array)
+{
+	int	i;
+
+	i = -1;
+	while (array[++i])
+		;
+	return (i);
 }
