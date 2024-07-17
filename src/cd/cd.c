@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 11:36:13 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/09 12:33:18 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/17 11:42:19 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	cd(char *path)
 {
 	DIR	*dirp;
 
-	if (path == NULL || ft_strcmp(path, "EOFToken"))
+	if (path == NULL)
 		return (1);
 	dirp = opendir(path);
 	closedir(dirp);
