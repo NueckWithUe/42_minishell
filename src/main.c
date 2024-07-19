@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:00 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/17 11:39:42 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/19 11:18:21 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	free_tokens(char **tokens)
 	while (tokens[i])
 	{
 		free(tokens[i]);
+		tokens[i] = NULL;
 		i++;
 	}
 	free(tokens);
@@ -68,9 +69,10 @@ static void	print_tokens(char **tokens, int m, int i)
 	{
 		while (tokens[i] != NULL)
 		{
-			ft_printf("%s\n", tokens[i]);
+			ft_printf("%s ", tokens[i]);
 			i++;
 		}
+		ft_printf("\n");
 	}
 }
 
@@ -93,23 +95,37 @@ int	main(int argc, char **argv, char **envp)
 		tokens = lexer(input);
 		saned_tokens = sanitize_tokens(tokens);
 		// parser(tokens); //check tokens for grammar
-		if (ft_strcomp(tokens[0], "stop"))
+		if (ft_strcomp(input, "stop"))
 			break ;
+		else if (ft_strcomp(input, "$?"))
+		{
+			ft_printf("%d\n", ret);
+			ret = 0;
+		}
 		if (ft_strchr(input, '|'))
 			handle_pipe(tokens);
 		if (ft_strcomp(tokens[0], "echo"))
 		{
 			if (ft_strcomp(tokens[1], "-n"))
+			{
 				print_tokens(saned_tokens, 0, 2);
+				ret = 0;
+			}
 			else
+			{
 				print_tokens(saned_tokens, 1, 1);
+				ret = 0;
+			}
 		}
 		if (ft_strcomp(tokens[0], "env") && ft_strcomp(tokens[1], "EOFToken"))
+		{
 			print_arr(envp);
+			ret = 0;
+		}
 		else if (ft_strcomp(tokens[0], "exit") && ft_strcomp(tokens[1], "EOFToken"))
-			exit(EXIT_SUCCESS); //exit needs to use the last exit status
-		else if (ft_strcomp(tokens[0], "cd") && !ft_strcomp(tokens[1], "EOFToken"))
-			ret = cd(tokens[1]); //ret will be the return value in the future
+			exit(ret);
+		else if (ft_strcomp(tokens[0], "cd"))
+			ret = cd(tokens[1]);
 		free_tokens(tokens);
 		free_tokens(saned_tokens);
 	}
