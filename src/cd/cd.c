@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 11:36:13 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/17 11:42:19 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/19 12:07:20 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 int	cd(char *path)
 {
-	DIR	*dirp;
-
 	if (path == NULL)
 		return (1);
-	dirp = opendir(path);
-	closedir(dirp);
+	if (chdir(path) == -1)
+		return (1);
 	return (0);
 }
