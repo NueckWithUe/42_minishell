@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 11:36:13 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/22 21:22:56 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/22 22:55:12 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*get_saned_path(char *path)
 	int		i;
 	int		j;
 
-	saned_path = malloc(ft_strlen(path));
+	saned_path = malloc(ft_strlen(path) + 1);
 	if (!saned_path)
 		return (NULL);
 	i = 1;
@@ -33,21 +33,34 @@ static char	*get_saned_path(char *path)
 	return (saned_path);
 }
 
-static void	set_pwd(char **pwd)
+static void	set_pwd(char ***envp, char *buffer)
 {
+	int	i;
 
+	i = 0;
+	while (ft_strncmp((*envp)[i], "PWD", 3))
+		i++;
+	(*envp)[i] = ft_strjoin("PWD=", buffer);
 }
 
-static void	set_oldpwd(char **oldpwd)
+static void	set_oldpwd(char ***envp, char *oldpwd)
 {
+	int	i;
 
+	i = 0;
+	while (ft_strncmp((*envp)[i], "OLDPWD", 6))
+		i++;
+	(*envp)[i] = ft_strjoin("OLDPWD=", oldpwd);
 }
 
-int	cd(char ***envp, char *path)
+int	cd(char **envp, char *path)
 {
 	char	*alt_path;
 	char	*saned_path;
+	char	*oldpwd;
+	char	buffer[1024];
 
+	oldpwd = getenv("PWD");
 	if (ft_strcomp(path, "-"))
 		alt_path = ft_strdup(getenv("OLDPWD"));
 	else if (ft_strcomp(path, "EOFToken"))
@@ -71,6 +84,9 @@ int	cd(char ***envp, char *path)
 		free(alt_path);
 		return (1);
 	}
+	getcwd(buffer, 1024);
+	set_pwd(&envp, buffer);
+	set_oldpwd(&envp, oldpwd);
 	free(alt_path);
 	return (0);
 }

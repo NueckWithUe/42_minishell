@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:09 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/22 21:14:01 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/22 22:55:45 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_strtok(char *str, char delimiter);
 void	handle_pipe(char **tokens);
 
 /* cd */
-int		cd(char ***envp, char *path);
+int		cd(char **envp, char *path);
 
 /* echo */
 int		print_echo(char **tokens, int start);

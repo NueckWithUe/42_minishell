@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:00 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/22 21:14:46 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/22 22:58:43 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,13 @@ int	main(int argc, char **argv, char **envp)
 	int		ret;
 	char	*input;
 	char	**tokens;
-	int		stop = 0;
 
 	ret = 0;
 	input = NULL;
 	if (argc >= 2)
 		return (1);
 	(void)argv;
-	while (!stop)
+	while (1)
 	{
 		input = readline(">> ");
 		tokens = lexer(input);
@@ -59,7 +58,7 @@ int	main(int argc, char **argv, char **envp)
 		else if (ft_strcomp(tokens[0], "exit") && ft_strcomp(tokens[1], "EOFToken"))
 			exit(ret);
 		else if (ft_strcomp(tokens[0], "cd"))
-			ret = cd(&envp, tokens[1]);
+			ret = cd(envp, tokens[1]);
 		else if (ft_strcomp(tokens[0], "unset"))
 			ret = unset(&envp, tokens);
 		free_tokens(tokens);
