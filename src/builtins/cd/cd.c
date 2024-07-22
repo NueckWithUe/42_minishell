@@ -6,11 +6,11 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 11:36:13 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/22 09:56:16 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/22 21:22:56 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../../../include/minishell.h"
 
 static char	*get_saned_path(char *path)
 {
@@ -33,13 +33,21 @@ static char	*get_saned_path(char *path)
 	return (saned_path);
 }
 
-int	cd(char *path)
+static void	set_pwd(char **pwd)
+{
+
+}
+
+static void	set_oldpwd(char **oldpwd)
+{
+
+}
+
+int	cd(char ***envp, char *path)
 {
 	char	*alt_path;
 	char	*saned_path;
 
-	if (path == NULL)
-		return (1);
 	if (ft_strcomp(path, "-"))
 		alt_path = ft_strdup(getenv("OLDPWD"));
 	else if (ft_strcomp(path, "EOFToken"))

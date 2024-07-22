@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 13:44:00 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/01 15:04:39 by nnagel           ###   ########.fr       */
+/*   Created: 2024/07/22 20:54:36 by nnagel            #+#    #+#             */
+/*   Updated: 2024/07/22 20:57:24 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../../../include/minishell.h"
 
-int	ft_printf(const char *f, ...)
+int	print_echo(char **tokens, int start)
 {
-	va_list	ap;
-	int		len;
+	int	i;
 
-	len = 0;
-	va_start(ap, f);
-	while (*f)
+	i = start;
+	while (!ft_strcomp(tokens[i], "EOFToken"))
 	{
-		if (*f == '%')
-		{
-			f++;
-			if (*f == '\0')
-				break ;
-			if (*f == '%')
-				len += write(1, &*f, 1);
-			else
-				len += ft_format(*f, ap);
-		}
+		if (ft_strcomp(tokens[i + 1], "EOFToken"))
+			ft_printf("%s", tokens[i]);
 		else
-			len += write(1, &*f, 1);
-		f++;
+			ft_printf("%s ", tokens[i]);
+		i++;
 	}
-	va_end(ap);
-	return (len);
+	if (start == 1)
+		write(1, "\n", 1);
+	return (0);
 }

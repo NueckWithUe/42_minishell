@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 11:57:31 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/01 14:47:08 by nnagel           ###   ########.fr       */
+/*   Created: 2024/07/22 21:08:02 by nnagel            #+#    #+#             */
+/*   Updated: 2024/07/22 21:13:18 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../../../include/minishell.h"
 
-void	ft_bzero(void *s, size_t n)
+int	unset(char ***envp, char **tokens)
 {
-	size_t	i;
-	char	*temp;
-
-	i = 0;
-	temp = s;
-	if (n != 0)
-	{
-		while (i < n)
-		{
-			temp[i] = '\0';
-			i++;
-		}
-	}
+	(void)envp;
+	if (ft_strcomp(tokens[1], "EOFToken"))
+		return (0);
+	return (0);
 }

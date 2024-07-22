@@ -18,11 +18,20 @@ PIPSRC	=	pipes.c
 UTILDIR	=	src/utils/
 UTILSRC	=	utils.c
 
-CDDIR	=	src/cd/
+CDDIR	=	src/builtins/cd/
 CDSRC	=	cd.c
 
+ECHODIR	=	src/builtins/echo/
+ECHOSRC	=	echo.c
+
+ENVDIR	=	src/builtins/env/
+ENVSRC	=	env.c
+
+USETDIR	=	src/builtins/unset/
+USETSRC	=	unset.c
+
 OBJDIR	=	obj/
-OBJS	=	$(addprefix $(OBJDIR), $(SRC:%.c=%.o) $(PARSSRC:%.c=%.o) $(LEXSRC:%.c=%.o) $(PIPSRC:%.c=%.o) $(UTILSRC:%.c=%.o) $(CDSRC:%.c=%.o))
+OBJS	=	$(addprefix $(OBJDIR), $(SRC:%.c=%.o) $(PARSSRC:%.c=%.o) $(LEXSRC:%.c=%.o) $(PIPSRC:%.c=%.o) $(UTILSRC:%.c=%.o) $(CDSRC:%.c=%.o) $(ECHOSRC:%.c=%.o) $(ENVSRC:%.c=%.o) $(USETSRC:%.c=%.o))
 
 LIBFT	=	libft/libft.a
 
@@ -55,6 +64,18 @@ obj/%.o:	$(UTILDIR)%.c
 			$(CC) $(CFLAGS) -c $< -o $@
 
 obj/%.o:	$(CDDIR)%.c
+			@mkdir -p obj
+			$(CC) $(CFLAGS) -c $< -o $@
+
+obj/%.o:	$(ECHODIR)%.c
+			@mkdir -p obj
+			$(CC) $(CFLAGS) -c $< -o $@
+
+obj/%.o:	$(ENVDIR)%.c
+			@mkdir -p obj
+			$(CC) $(CFLAGS) -c $< -o $@
+
+obj/%.o:	$(USETDIR)%.c
 			@mkdir -p obj
 			$(CC) $(CFLAGS) -c $< -o $@
 
