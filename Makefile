@@ -30,8 +30,11 @@ ENVSRC	=	env.c
 USETDIR	=	src/builtins/unset/
 USETSRC	=	unset.c
 
+EXPDIR	=	src/builtins/export/
+EXPSRC	=	export.c
+
 OBJDIR	=	obj/
-OBJS	=	$(addprefix $(OBJDIR), $(SRC:%.c=%.o) $(PARSSRC:%.c=%.o) $(LEXSRC:%.c=%.o) $(PIPSRC:%.c=%.o) $(UTILSRC:%.c=%.o) $(CDSRC:%.c=%.o) $(ECHOSRC:%.c=%.o) $(ENVSRC:%.c=%.o) $(USETSRC:%.c=%.o))
+OBJS	=	$(addprefix $(OBJDIR), $(SRC:%.c=%.o) $(PARSSRC:%.c=%.o) $(LEXSRC:%.c=%.o) $(PIPSRC:%.c=%.o) $(UTILSRC:%.c=%.o) $(CDSRC:%.c=%.o) $(ECHOSRC:%.c=%.o) $(ENVSRC:%.c=%.o) $(USETSRC:%.c=%.o) $(EXPSRC:%.c=%.o))
 
 LIBFT	=	libft/libft.a
 
@@ -76,6 +79,10 @@ obj/%.o:	$(ENVDIR)%.c
 			$(CC) $(CFLAGS) -c $< -o $@
 
 obj/%.o:	$(USETDIR)%.c
+			@mkdir -p obj
+			$(CC) $(CFLAGS) -c $< -o $@
+
+obj/%.o:	$(EXPDIR)%.c
 			@mkdir -p obj
 			$(CC) $(CFLAGS) -c $< -o $@
 

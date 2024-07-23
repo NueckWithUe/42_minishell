@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:09 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/22 22:55:45 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/22 23:36:06 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ int		print_echo(char **tokens, int start);
 
 /* env */
 int		print_arr(char **arr);
+
+/* export */
+int		export(char **envp, char **tokens);
 
 /* unset */
 int		unset(char ***envp, char **tokens);

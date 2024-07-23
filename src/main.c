@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:00 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/22 22:58:43 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/22 23:36:11 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	main(int argc, char **argv, char **envp)
 			ret = cd(envp, tokens[1]);
 		else if (ft_strcomp(tokens[0], "unset"))
 			ret = unset(&envp, tokens);
+		else if (ft_strcomp(tokens[0], "export"))
+			ret = export(envp, tokens);
 		free_tokens(tokens);
 	}
 	return (ret);
