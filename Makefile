@@ -13,7 +13,8 @@ LEXSRC	=	lexer.c \
 			lexer_utils.c
 
 PIPDIR	=	src/pipes/
-PIPSRC	=	pipes.c
+PIPSRC	=	pipes.c \
+			pipe_utils.c
 
 UTILDIR	=	src/utils/
 UTILSRC	=	utils.c
