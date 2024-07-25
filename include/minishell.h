@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:09 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/22 23:36:06 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/25 09:38:02 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,5 @@ int		unset(char ***envp, char **tokens);
 /* general utils */
 int		ft_strcomp(char *str1, char *str2);
 int		array_size(char **array);
+char	*convert_env(char *line);
 #endif

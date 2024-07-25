@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 20:54:36 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/22 20:57:24 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/25 09:38:42 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,20 @@
 
 int	print_echo(char **tokens, int start)
 {
-	int	i;
+	int		i;
+	char	*convert;
 
 	i = start;
 	while (!ft_strcomp(tokens[i], "EOFToken"))
 	{
+		convert = convert_env(tokens[i]);
 		if (ft_strcomp(tokens[i + 1], "EOFToken"))
-			ft_printf("%s", tokens[i]);
+			ft_printf("%s", convert);
 		else
-			ft_printf("%s ", tokens[i]);
+			ft_printf("%s ", convert);
+		if (tokens[i][0] == '$')
+			free(convert);
+		convert = NULL;
 		i++;
 	}
 	if (start == 1)

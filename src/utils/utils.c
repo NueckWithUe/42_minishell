@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:15:42 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/17 11:43:43 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/25 09:37:23 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,17 @@ int	array_size(char **array)
 	while (array[++i])
 		;
 	return (i);
+}
+
+char	*convert_env(char *line)
+{
+	char	*convert;
+
+	convert = NULL;
+	if (line[0] != '$')
+		return (line);
+	convert = ft_strdup(getenv(line + 1));
+	if (!convert)
+		return (NULL);
+	return (convert);
 }
