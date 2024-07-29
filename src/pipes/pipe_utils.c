@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <../../../include/minishell.h>
+#include "../../include/minishell.h"
 
 static int	size_before_pipe(char **tokens, int a)
 {

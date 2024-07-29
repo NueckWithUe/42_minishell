@@ -40,7 +40,7 @@ OBJS	=	$(addprefix $(OBJDIR), $(SRC:%.c=%.o) $(PARSSRC:%.c=%.o) $(LEXSRC:%.c=%.o
 LIBFT	=	libft/libft.a
 
 $(NAME):	$(LIBFT) $(OBJS)
-			$(CC) $(CFLAGS) $(LIBFT) $(OBJS) -o $(NAME) -lreadline
+			$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME) -lreadline
 
 all:		$(NAME)
 

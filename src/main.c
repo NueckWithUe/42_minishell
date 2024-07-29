@@ -57,7 +57,7 @@ int	main(int argc, char **argv, char **envp)
 		input = readline(">> ");
 		tokens = lexer(input);
 		if (ft_strchr(input, '|'))
-			handle_pipe(tokens);
+			handle_pipe(envp, tokens);
 		else if (ft_strcomp(tokens[0], "echo"))
 		{
 			if (ft_strcomp(tokens[1], "-n"))

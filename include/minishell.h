@@ -40,7 +40,7 @@ int		ft_get_wc(char *str, char delimiter);
 char	*ft_strtok(char *str, char delimiter);
 
 /* pipes */
-void	handle_pipe(char **tokens);
+void	handle_pipe(char **envp, char **tokens);
 void	get_command(char **tokens, char ***com1, char ***com2);
 void	check_pid(pid_t pid);
 
@@ -63,4 +63,5 @@ int		unset(char ***envp, char **tokens);
 int		ft_strcomp(char *str1, char *str2);
 int		array_size(char **array);
 char	*convert_env(char *line);
+void	ft_free_array(char **array1, char **array2);
 #endif

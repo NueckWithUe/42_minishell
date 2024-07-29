@@ -53,3 +53,20 @@ char	*convert_env(char *line)
 		return (NULL);
 	return (convert);
 }
+
+void	ft_free_array(char **array1, char **array2)
+{
+	int	i;
+
+	i = -1;
+	while (array1[++i])
+		free(array1[i]);
+	free(array1);
+	if (array2)
+	{
+		i = -1;
+		while (array2[++i])
+			free(array2[i]);
+		free(array2);
+	}
+}
