@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 23:07:37 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 16:54:23 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 18:05:33 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@
 // 	}
 // 	return (smallest);
 // }
-
-// if s1 bigger than s2 ft_strncmp returns positive. "B" compared with "A" returns 1, "A" compared with "B" returns -1
 
 static int	list_size(t_lst *lst)
 {
@@ -84,14 +82,11 @@ static void	print_exports(t_lst *envp)
 	}
 }
 
-int	export(t_lst *envp, char **tokens)
+int	export(t_lst **envp, char **tokens)
 {
-	int	i;
-
-	i = 0;
 	if (ft_strcomp(tokens[1], "EOFToken"))
 	{
-		print_exports(envp);
+		print_exports(*envp);
 	}
 	else
 	{

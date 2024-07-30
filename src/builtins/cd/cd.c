@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 11:36:13 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 16:54:23 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 17:54:49 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	*get_saned_path(char *path)
 	return (saned_path);
 }
 
-static void	set_pwd(t_lst *envp, char *buffer)
+static void	set_pwd(t_lst **envp, char *buffer)
 {
 	// work with search_and_replace function
 	// search_and_replace();
@@ -49,7 +49,7 @@ static void	set_pwd(t_lst *envp, char *buffer)
 	// (*envp)[i] = ft_strjoin("PWD=", buffer);
 }
 
-static void	set_oldpwd(t_lst *envp, char *oldpwd)
+static void	set_oldpwd(t_lst **envp, char *oldpwd)
 {
 	// work with search_and_replace function
 	// search_and_replace();
@@ -65,7 +65,7 @@ static void	set_oldpwd(t_lst *envp, char *oldpwd)
 	// (*envp)[i] = ft_strjoin("OLDPWD=", oldpwd);
 }
 
-int	cd(t_lst *envp, char *path)
+int	cd(t_lst **envp, char *path)
 {
 	char	*alt_path;
 	char	*saned_path;
