@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unset.c                                            :+:      :+:    :+:   */
+/*   unset_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 21:08:02 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 18:53:09 by nnagel           ###   ########.fr       */
+/*   Created: 2024/07/30 18:23:17 by nnagel            #+#    #+#             */
+/*   Updated: 2024/07/30 18:25:43 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/minishell.h"
 
-int	unset(t_lst **envp, char **tokens)
+void	ft_remove_element(t_lst **start)
 {
-	int	i;
+	t_lst	*curr;
+	t_lst	*last;
 
-	i = 0;
-	while (!ft_strcomp(tokens[++i], "EOFToken"))
-		search_and_remove(envp, tokens[i]);
-	return (0);
+	curr = *start;
+	if ((*start)->prev == (*start))
+	{
+		free((*start));
+		(*start) = NULL;
+		return ;
+	}
+	last = (*start)->prev;
+	*start = (*start)->next;
+	last->next = (*start);
+	(*start)->prev = last;
+	free(curr);
 }

@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:09 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 17:55:59 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 18:25:43 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	ft_insert_begin(t_lst **start, char *data);
 
 /* unset */
 int		unset(t_lst **envp, char **tokens);
+void	ft_remove_element(t_lst **start);
 
 /* general utils */
 int		ft_strcomp(char *str1, char *str2);
