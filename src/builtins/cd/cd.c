@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 11:36:13 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/22 22:55:12 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 16:42:34 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,39 @@ static char	*get_saned_path(char *path)
 	return (saned_path);
 }
 
-static void	set_pwd(char ***envp, char *buffer)
+static void	set_pwd(t_env *envp, char *buffer)
 {
-	int	i;
+	// work with search_and_replace function
+	// search_and_replace();
 
-	i = 0;
-	while (ft_strncmp((*envp)[i], "PWD", 3))
-		i++;
-	(*envp)[i] = ft_strjoin("PWD=", buffer);
+	(void)envp;
+	(void)buffer;
+
+	// int	i;
+
+	// i = 0;
+	// while (ft_strncmp((*envp)[i], "PWD", 3))
+	// 	i++;
+	// (*envp)[i] = ft_strjoin("PWD=", buffer);
 }
 
-static void	set_oldpwd(char ***envp, char *oldpwd)
+static void	set_oldpwd(t_env *envp, char *oldpwd)
 {
-	int	i;
+	// work with search_and_replace function
+	// search_and_replace();
 
-	i = 0;
-	while (ft_strncmp((*envp)[i], "OLDPWD", 6))
-		i++;
-	(*envp)[i] = ft_strjoin("OLDPWD=", oldpwd);
+	(void)envp;
+	(void)oldpwd;
+
+	// int	i;
+
+	// i = 0;
+	// while (ft_strncmp((*envp)[i], "OLDPWD", 6))
+	// 	i++;
+	// (*envp)[i] = ft_strjoin("OLDPWD=", oldpwd);
 }
 
-int	cd(char **envp, char *path)
+int	cd(t_env *envp, char *path)
 {
 	char	*alt_path;
 	char	*saned_path;
@@ -85,8 +97,8 @@ int	cd(char **envp, char *path)
 		return (1);
 	}
 	getcwd(buffer, 1024);
-	set_pwd(&envp, buffer);
-	set_oldpwd(&envp, oldpwd);
+	set_pwd(envp, buffer);
+	set_oldpwd(envp, oldpwd);
 	free(alt_path);
 	return (0);
 }

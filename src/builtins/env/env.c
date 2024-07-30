@@ -6,21 +6,33 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:02:20 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/22 21:04:07 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 16:34:11 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/minishell.h"
 
-int	print_arr(char **arr)
+void	search_and_replace(t_env **start, char *to_replace)
 {
-	int	i;
+	(void)start;
+	(void)to_replace;
+}
 
-	i = 0;
-	while (arr[i])
+void	search_and_remove(t_env **start, char *to_remove)
+{
+	(void)start;
+	(void)to_remove;
+}
+
+void	print_list(t_env *lst)
+{
+	t_env	*temp;
+
+	temp = lst;
+	while (temp->next != lst)
 	{
-		ft_printf("%s\n", arr[i]);
-		i++;
+		ft_printf("%s\n", temp->data);
+		temp = temp->next;
 	}
-	return (0);
+	ft_printf("%s\n", temp->data);
 }

@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:00 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/23 02:32:29 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 16:36:55 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,67 @@ static int	str_is_num(char *str)
 	return (1);
 }
 
-static char	**copy_env(char **envp)
-{
-	int		i;
-	char	**own_envs;
+// static char	**copy_env(char **envp)
+// {
+// 	int		i;
+// 	char	**own_envs;
 
-	i = 0;
-	own_envs = malloc(sizeof(char *) * array_size(envp) * 1);
-	while (envp[i])
-	{
-		own_envs[i] = ft_strdup(envp[i]);
-		i++;
-	}
-	return (own_envs);
-}
+// 	i = 0;
+// 	own_envs = malloc(sizeof(char *) * array_size(envp) + 1);
+// 	if (!own_envs)
+// 		return (NULL);
+// 	while (envp[i])
+// 	{
+// 		own_envs[i] = ft_strdup(envp[i]);
+// 		i++;
+// 	}
+// 	own_envs[i] = NULL;
+// 	return (own_envs);
+// }
 
-static void	ft_main(char **envp)
+// static void	ft_main(char **envp)
+// {
+// 	int		ret;
+// 	char	*input;
+// 	char	**tokens;
+
+// 	ret = 0;
+// 	input = NULL;
+// 	while (1)
+// 	{
+// 		input = readline(">> ");
+// 		tokens = lexer(input);
+// 		if (ft_strchr(input, '|'))
+// 			handle_pipe(envp, tokens);
+// 		else if (ft_strcomp(tokens[0], "echo"))
+// 		{
+// 			if (ft_strcomp(tokens[1], "-n"))
+// 				ret = print_echo(tokens, 2);
+// 			else
+// 				ret = print_echo(tokens, 1);
+// 		}
+// 		else if (ft_strcomp(tokens[0], "env") && ft_strcomp(tokens[1], "EOFToken"))
+// 			ret = print_arr(envp);
+// 		else if (ft_strcomp(tokens[0], "pwd") && ft_strcomp(tokens[1], "EOFToken"))
+// 			ft_printf("%s\n", getenv("PWD"));
+// 		else if (ft_strcomp(tokens[0], "exit"))
+// 		{
+// 			if (ft_strcomp(tokens[1], "EOFToken"))
+// 				exit(ret);
+// 			else if (str_is_num(tokens[1]))
+// 				exit(ft_atoi(tokens[1]));
+// 		}
+// 		else if (ft_strcomp(tokens[0], "cd"))
+// 			ret = cd(envp, tokens[1]);
+// 		else if (ft_strcomp(tokens[0], "unset"))
+// 			ret = unset(&envp, tokens);
+// 		else if (ft_strcomp(tokens[0], "export"))
+// 			ret = export(envp, tokens);
+// 		free_tokens(tokens);
+// 	}
+// }
+
+static void	ft_main(t_env *envp)
 {
 	int		ret;
 	char	*input;
@@ -78,7 +123,7 @@ static void	ft_main(char **envp)
 				ret = print_echo(tokens, 1);
 		}
 		else if (ft_strcomp(tokens[0], "env") && ft_strcomp(tokens[1], "EOFToken"))
-			ret = print_arr(envp);
+			print_list(envp);
 		else if (ft_strcomp(tokens[0], "pwd") && ft_strcomp(tokens[1], "EOFToken"))
 			ft_printf("%s\n", getenv("PWD"));
 		else if (ft_strcomp(tokens[0], "exit"))
@@ -91,7 +136,7 @@ static void	ft_main(char **envp)
 		else if (ft_strcomp(tokens[0], "cd"))
 			ret = cd(envp, tokens[1]);
 		else if (ft_strcomp(tokens[0], "unset"))
-			ret = unset(&envp, tokens);
+			ret = unset(envp, tokens);
 		else if (ft_strcomp(tokens[0], "export"))
 			ret = export(envp, tokens);
 		free_tokens(tokens);
@@ -100,12 +145,16 @@ static void	ft_main(char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	char	**envs;
+	// char	**envs;
+	t_env	*envs;
 
 	if (argc >= 2)
 		return (1);
 	(void)argv;
-	envs = copy_env(envp);
+	// envs = copy_env(envp);
+	envs = convert_env_to_list(envp);
+	if (!envs)
+		return (1);
 	ft_main(envs);
 	return (0);
 }

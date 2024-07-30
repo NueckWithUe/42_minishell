@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unset.c                                            :+:      :+:    :+:   */
+/*   add_exports.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 21:08:02 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 16:42:58 by nnagel           ###   ########.fr       */
+/*   Created: 2024/07/30 15:02:00 by nnagel            #+#    #+#             */
+/*   Updated: 2024/07/30 16:23:19 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/minishell.h"
 
-int	unset(t_env *envp, char **tokens)
+void	add_exports(t_env *envp, char **tokens)
 {
-	(void)envp;
-	if (ft_strcomp(tokens[1], "EOFToken"))
-		return (0);
-	return (0);
+	int	i;
+
+	i = 1;
+	while (ft_strncmp(tokens[i], "EOFToken", 8))
+	{
+		if (ft_strchr(tokens[i], '='))
+		{
+			ft_printf("%s should be added to env\n", tokens[i]);
+			ft_insert_at_end(&envp, tokens[i]);
+		}
+		i++;
+	}
 }
