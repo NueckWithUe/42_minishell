@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 11:36:13 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 17:54:49 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 20:05:30 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,39 +33,27 @@ static char	*get_saned_path(char *path)
 	return (saned_path);
 }
 
-static void	set_pwd(t_lst **envp, char *buffer)
+static void	set_pwd(char ***envp, char *buffer)
 {
-	// work with search_and_replace function
-	// search_and_replace();
+	int	i;
 
-	(void)envp;
-	(void)buffer;
-
-	// int	i;
-
-	// i = 0;
-	// while (ft_strncmp((*envp)[i], "PWD", 3))
-	// 	i++;
-	// (*envp)[i] = ft_strjoin("PWD=", buffer);
+	i = 0;
+	while (ft_strncmp((*envp)[i], "PWD", 3))
+		i++;
+	(*envp)[i] = ft_strjoin("PWD=", buffer);
 }
 
-static void	set_oldpwd(t_lst **envp, char *oldpwd)
+static void	set_oldpwd(char ***envp, char *oldpwd)
 {
-	// work with search_and_replace function
-	// search_and_replace();
+	int	i;
 
-	(void)envp;
-	(void)oldpwd;
-
-	// int	i;
-
-	// i = 0;
-	// while (ft_strncmp((*envp)[i], "OLDPWD", 6))
-	// 	i++;
-	// (*envp)[i] = ft_strjoin("OLDPWD=", oldpwd);
+	i = 0;
+	while (ft_strncmp((*envp)[i], "OLDPWD", 6))
+		i++;
+	(*envp)[i] = ft_strjoin("OLDPWD=", oldpwd);
 }
 
-int	cd(t_lst **envp, char *path)
+int	cd(char ***envp, char *path)
 {
 	char	*alt_path;
 	char	*saned_path;
@@ -102,3 +90,22 @@ int	cd(t_lst **envp, char *path)
 	free(alt_path);
 	return (0);
 }
+
+/* that's how you change PWD in envp */
+
+// int main(int argc, char **argv, char **envp)
+// {
+
+// 	if (argc != 2)
+// 		return (1);
+// 	int i;
+// 	i = 0;
+// 	while (ft_strncmp(envp[i], "PWD", 3))
+// 		i++;
+// 	printf("oldpwd: %s\n", getenv("PWD"));
+// 	chdir(argv[1]);
+// 	char *pwd;
+// 	pwd = getcwd(pwd, 1024);
+// 	envp[i] = ft_strjoin("PWD=", pwd);
+// 	printf("pwd: %s\n", getenv("PWD"));
+// }

@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 23:07:37 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 18:05:33 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 20:22:29 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,6 @@
 // 	}
 // 	return (smallest);
 // }
-
-static int	list_size(t_lst *lst)
-{
-	t_lst	*temp;
-	int		i;
-
-	temp = lst;
-	i = 0;
-	while (temp->next != lst)
-	{
-		temp = temp->next;
-		i++;
-	}
-	return (i);
-}
 
 static char	**sort_ascend(t_lst *envp)
 {
@@ -82,11 +67,15 @@ static void	print_exports(t_lst *envp)
 	}
 }
 
-int	export(t_lst **envp, char **tokens)
+int	export(char ***envp, char **tokens)
 {
+	t_lst	*envs;
+
 	if (ft_strcomp(tokens[1], "EOFToken"))
 	{
-		print_exports(*envp);
+		envs = convert_env_to_list(*envp);
+		print_exports(envs);
+		ft_free_list(envs);
 	}
 	else
 	{

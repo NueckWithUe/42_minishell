@@ -6,13 +6,13 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 22:36:24 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 17:55:30 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 20:16:43 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static void	execute_function(t_lst **envp, char **command)
+static void	execute_function(char ***envp, char **command)
 {
 	if (ft_strcomp(command[0], "echo"))
 	{
@@ -22,7 +22,7 @@ static void	execute_function(t_lst **envp, char **command)
 			print_echo(command, 1);
 	}
 	else if (ft_strcomp(command[0], "env") && ft_strcomp(command[1], "EOFToken"))
-		print_list(*envp);
+		print_envp(*envp);
 	else if (ft_strcomp(command[0], "unset"))
 		unset(envp, command);
 	else if (ft_strcomp(command[0], "export"))
@@ -31,7 +31,7 @@ static void	execute_function(t_lst **envp, char **command)
 		cd(envp, command[1]);
 }
 
-static void	exe_cmd(pid_t pid, int *pipe_fd, t_lst **envp, char **command, int m)
+static void	exe_cmd(pid_t pid, int *pipe_fd, char ***envp, char **command, int m)
 {
 	if (pid == 0)
 	{
@@ -52,7 +52,7 @@ static void	exe_cmd(pid_t pid, int *pipe_fd, t_lst **envp, char **command, int m
 	// }
 }
 
-void	handle_pipe(t_lst **envp, char **tokens)
+void	handle_pipe(char ***envp, char **tokens)
 {
 	int		pipe_fd[2];
 	pid_t	pid1;

@@ -26,8 +26,7 @@ ENVDIR	=	src/builtins/env/
 ENVSRC	=	env.c
 
 USETDIR	=	src/builtins/unset/
-USETSRC	=	unset.c \
-			unset_utils.c
+USETSRC	=	unset.c
 
 EXPDIR	=	src/builtins/export/
 EXPSRC	=	export.c \

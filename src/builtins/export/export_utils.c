@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 15:38:56 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 17:39:16 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 20:21:24 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,32 @@ void	ft_insert_at_end(t_lst **start, char *data)
 	last->next = new_data;
 }
 
-void	ft_insert_begin(t_lst **start, char *data)
+int	list_size(t_lst *lst)
 {
-	t_lst	*new_env;
-	t_lst	*last;
+	t_lst	*temp;
+	int		i;
 
-	last = (*start)->prev;
-	new_env = malloc(sizeof(t_lst));
-	new_env->data = ft_strdup(data);
-	new_env->next = *start;
-	new_env->prev = last;
-	last->next = new_env;
-	(*start)->prev = new_env;
-	(*start) = new_env;
+	temp = lst;
+	i = 0;
+	while (temp->next != lst)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (i);
+}
+
+void	ft_free_list(t_lst *list)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = list_size(list);
+	while (i <= len)
+	{
+		free(list->data);
+		free(list);
+		list = list->next;
+	}
 }

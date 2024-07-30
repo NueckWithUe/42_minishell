@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:00 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 17:57:15 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 20:16:28 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	str_is_num(char *str)
 	return (1);
 }
 
-static void	ft_main(t_lst *envp)
+static void	ft_main(char **envp)
 {
 	int		ret;
 	char	*input;
@@ -63,7 +63,7 @@ static void	ft_main(t_lst *envp)
 				ret = print_echo(tokens, 1);
 		}
 		else if (ft_strcomp(tokens[0], "env") && ft_strcomp(tokens[1], "EOFToken"))
-			print_list(envp);
+			print_envp(envp);
 		else if (ft_strcomp(tokens[0], "pwd") && ft_strcomp(tokens[1], "EOFToken"))
 			ft_printf("%s\n", getenv("PWD"));
 		else if (ft_strcomp(tokens[0], "exit"))
@@ -85,14 +85,9 @@ static void	ft_main(t_lst *envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_lst	*envs;
-
 	if (argc >= 2)
 		return (1);
 	(void)argv;
-	envs = convert_env_to_list(envp);
-	if (!envs)
-		return (1);
-	ft_main(envs);
+	ft_main(envp);
 	return (0);
 }

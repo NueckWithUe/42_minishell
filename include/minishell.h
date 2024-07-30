@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:09 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 18:25:43 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 20:20:06 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_env
 	void			*data;
 }	t_lst;
 
-char	**parser(char **tokens);
 char	**lexer(char *input);
 
 /* lexer utils */
@@ -47,32 +46,30 @@ int		ft_get_wc(char *str, char delimiter);
 char	*ft_strtok(char *str, char delimiter);
 
 /* pipes */
-void	handle_pipe(t_lst **envp, char **tokens);
+void	handle_pipe(char ***envp, char **tokens);
 void	get_command(char **tokens, char ***com1, char ***com2);
 void	check_pid(pid_t pid);
 
 /* cd */
-int		cd(t_lst **envp, char *path);
+int		cd(char ***envp, char *path);
 
 /* echo */
 int		print_echo(char **tokens, int start);
 
 /* env */
-void	print_list(t_lst *lst);
-void	search_and_replace(t_lst **start, char *to_replace);
-void	search_and_remove(t_lst **start, char *to_remove);
+void	print_envp(char **envp);
+void	search_and_remove(char ***start, char *to_remove);
 
 /* export */
-// int		export(char **envp, char **tokens);
-int		export(t_lst **envp, char **tokens);
-void	add_exports(t_lst **envp, char **tokens);
+int		export(char ***envp, char **tokens);
+void	add_exports(char ***envp, char **tokens);
 t_lst	*convert_env_to_list(char **envp);
 void	ft_insert_at_end(t_lst **start, char *data);
-void	ft_insert_begin(t_lst **start, char *data);
+void	ft_free_list(t_lst *list);
+int		list_size(t_lst *lst);
 
 /* unset */
-int		unset(t_lst **envp, char **tokens);
-void	ft_remove_element(t_lst **start);
+int		unset(char ***envp, char **tokens);
 
 /* general utils */
 int		ft_strcomp(char *str1, char *str2);

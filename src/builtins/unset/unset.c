@@ -6,13 +6,13 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:08:02 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 18:53:09 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 20:06:57 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/minishell.h"
 
-int	unset(t_lst **envp, char **tokens)
+int	unset(char ***envp, char **tokens)
 {
 	int	i;
 
