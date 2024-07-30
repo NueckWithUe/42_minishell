@@ -6,13 +6,13 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 15:02:00 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 16:23:19 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 16:54:23 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/minishell.h"
 
-void	add_exports(t_env *envp, char **tokens)
+void	add_exports(t_lst *envp, char **tokens)
 {
 	int	i;
 

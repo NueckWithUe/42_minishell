@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 23:07:37 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 16:36:44 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 16:54:23 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@
 
 // if s1 bigger than s2 ft_strncmp returns positive. "B" compared with "A" returns 1, "A" compared with "B" returns -1
 
-static int	list_size(t_env *lst)
+static int	list_size(t_lst *lst)
 {
-	t_env	*temp;
+	t_lst	*temp;
 	int		i;
 
 	temp = lst;
@@ -48,9 +48,9 @@ static int	list_size(t_env *lst)
 	return (i);
 }
 
-static char	**sort_ascend(t_env *envp)
+static char	**sort_ascend(t_lst *envp)
 {
-	t_env	*temp;
+	t_lst	*temp;
 	char	**sorted;
 	int		i;
 
@@ -69,7 +69,7 @@ static char	**sort_ascend(t_env *envp)
 // will soon be sorted properly
 
 
-static void	print_exports(t_env *envp)
+static void	print_exports(t_lst *envp)
 {
 	char	**sorted;
 	int		i;
@@ -84,7 +84,7 @@ static void	print_exports(t_env *envp)
 	}
 }
 
-int	export(t_env *envp, char **tokens)
+int	export(t_lst *envp, char **tokens)
 {
 	int	i;
 

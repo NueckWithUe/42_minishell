@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:00 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 16:36:55 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 17:07:11 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static int	str_is_num(char *str)
 // 	}
 // }
 
-static void	ft_main(t_env *envp)
+static void	ft_main(t_lst *envp)
 {
 	int		ret;
 	char	*input;
@@ -145,13 +145,11 @@ static void	ft_main(t_env *envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	// char	**envs;
-	t_env	*envs;
+	t_lst	*envs;
 
 	if (argc >= 2)
 		return (1);
 	(void)argv;
-	// envs = copy_env(envp);
 	envs = convert_env_to_list(envp);
 	if (!envs)
 		return (1);
