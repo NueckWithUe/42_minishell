@@ -6,15 +6,13 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:00 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 22:07:16 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 22:49:36 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int	g_global_signal;
-
-g_global_signal = 0;
+int	g_global_signal = 0;
 /* int	main(int argc, char **argv)
 {
 	char	        *ret;
@@ -223,9 +221,9 @@ int	main(int argc, char **argv, char **envp)
 	return (0);
 }
 
-*/
 
-/* int	main(int argc, char *argv[], char *envp[])
+*/
+int	main(int argc, char *argv[], char *envp[])
 {
 	t_minishell_struct	mini_data;
 	int					quite;
@@ -250,4 +248,4 @@ int	main(int argc, char **argv, char **envp)
 
 	return (quite);
 }
- */
+

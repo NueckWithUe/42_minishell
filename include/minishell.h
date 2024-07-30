@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:01:09 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 22:34:47 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 22:48:25 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # include <curses.h>
 # include <term.h>
 
+# define DEBUG 0
+# define BUFFER_SIZE 1024
 # include "libft.h"
 
 extern int	g_global_signal;

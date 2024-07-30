@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_handler.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blatifat <blatifat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 05:58:56 by blatifat          #+#    #+#             */
-/*   Updated: 2024/07/24 05:45:17 by blatifat         ###   ########.fr       */
+/*   Updated: 2024/07/30 22:47:57 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	check_file_type(const char *path)
 		if (S_ISDIR(floder.st_mode))
 		{
 			ft_putstr_fd("minishell ", STDERR_FILENO);
-			ft_putstr_fd(path, STDERR_FILENO);
+			ft_putstr_fd((char *)path, STDERR_FILENO);
 			ft_putstr_fd(": is a directory\n", STDERR_FILENO);
 			return (0);
 		}
@@ -84,7 +84,7 @@ int	verify_file_access(const char *path)
 		{
 			ft_putstr_fd("minishell", STDERR_FILENO);
 			ft_putstr_fd(": ", STDERR_FILENO);
-			ft_putstr_fd(path, STDERR_FILENO);
+			ft_putstr_fd((char *)path, STDERR_FILENO);
 			ft_putstr_fd(": Permission denied\n", STDERR_FILENO);
 			return (0);
 		}

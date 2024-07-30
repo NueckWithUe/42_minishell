@@ -83,6 +83,9 @@ EXPOSRC	=	export.c \
 			add_exports.c \
 			export_utils.c
 
+UTILSDIR	=	src/utils/
+UTILSSRC	=	utilities.c
+
 OBJDIR	=	obj/
 SRCOBJ	=	$(addprefix $(OBJDIR), $(SRC:.c=.o))
 PARSOBJ	=	$(addprefix $(OBJDIR), $(PARSSRC:.c=.o))
@@ -101,7 +104,8 @@ ECHOOBJ	=	$(addprefix $(OBJDIR), $(ECHOSRC:.c=.o))
 ENVOBJ	=	$(addprefix $(OBJDIR), $(ENVSRC:.c=.o))
 USETOBJ	=	$(addprefix $(OBJDIR), $(USETSRC:.c=.o))
 EXPOOBJ	=	$(addprefix $(OBJDIR), $(EXPOSRC:.c=.o))
-OBJS	=	$(SRCOBJ) $(PARSOBJ) $(UTILOBJ) $(REDIOBJ) $(FREEOBJ) $(EXPOBJ) $(SIGOBJ) $(PIPOBJ) $(CDOBJ) $(TEROBJ) $(FREOBJ) $(EXCOBJ)
+UTILSOBJ	=	$(addprefix $(OBJDIR), $(UTILSSRC:.c=.o))
+OBJS	=	$(SRCOBJ) $(PARSOBJ) $(UTILOBJ) $(REDIOBJ) $(FREEOBJ) $(EXPOBJ) $(SIGOBJ) $(PIPOBJ) $(CDOBJ) $(TEROBJ) $(FREOBJ) $(EXCOBJ) $(UTILSOBJ)
 
 LIBFT	=	libft/libft.a
 
@@ -170,6 +174,10 @@ $(OBJDIR)%.o: $(ENVDIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR)%.o: $(USETDIR)%.c
+	@mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR)%.o: $(UTILSDIR)%.c
 	@mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
