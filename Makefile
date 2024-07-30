@@ -5,9 +5,6 @@ CFLAGS	=	-Wall -Wextra -Werror
 SRCDIR	=	src/
 SRC		=	main.c
 
-PARSDIR	=	src/parser/
-PARSSRC	=	parser.c
-
 LEXDIR	=	src/lexer/
 LEXSRC	=	lexer.c \
 			lexer_utils.c
@@ -32,10 +29,12 @@ USETDIR	=	src/builtins/unset/
 USETSRC	=	unset.c
 
 EXPDIR	=	src/builtins/export/
-EXPSRC	=	export.c
+EXPSRC	=	export.c \
+			add_exports.c \
+			export_utils.c
 
 OBJDIR	=	obj/
-OBJS	=	$(addprefix $(OBJDIR), $(SRC:%.c=%.o) $(PARSSRC:%.c=%.o) $(LEXSRC:%.c=%.o) $(PIPSRC:%.c=%.o) $(UTILSRC:%.c=%.o) $(CDSRC:%.c=%.o) $(ECHOSRC:%.c=%.o) $(ENVSRC:%.c=%.o) $(USETSRC:%.c=%.o) $(EXPSRC:%.c=%.o))
+OBJS	=	$(addprefix $(OBJDIR), $(SRC:%.c=%.o) $(LEXSRC:%.c=%.o) $(PIPSRC:%.c=%.o) $(UTILSRC:%.c=%.o) $(CDSRC:%.c=%.o) $(ECHOSRC:%.c=%.o) $(ENVSRC:%.c=%.o) $(USETSRC:%.c=%.o) $(EXPSRC:%.c=%.o))
 
 LIBFT	=	libft/libft.a
 
@@ -48,10 +47,6 @@ $(LIBFT):
 			cd libft && make
 
 obj/%.o:	$(SRCDIR)%.c
-			@mkdir -p obj
-			$(CC) $(CFLAGS) -c $< -o $@
-
-obj/%.o:	$(PARSDIR)%.c
 			@mkdir -p obj
 			$(CC) $(CFLAGS) -c $< -o $@
 
