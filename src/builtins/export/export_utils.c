@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 15:38:56 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 20:21:24 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 20:27:14 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ void	ft_free_list(t_lst *list)
 		free(list->data);
 		free(list);
 		list = list->next;
+		i++;
 	}
 }

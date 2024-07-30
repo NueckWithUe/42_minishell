@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 21:02:20 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 20:15:03 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 20:24:56 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	print_envp(char **envp)
 	i = 0;
 	while (envp[i])
 	{
-		ft_printf(envp[i]);
+		ft_printf("%s\n", envp[i]);
 		i++;
 	}
 }

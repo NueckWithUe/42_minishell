@@ -6,15 +6,12 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:15:42 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 17:06:59 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/29 09:02:38 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-/*
-compares for equal strings
-returns 1 if strings are equal*/
 int	ft_strcomp(char *s1, char *s2)
 {
 	int	i;

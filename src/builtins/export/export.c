@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 23:07:37 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 20:22:29 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 20:27:36 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	export(char ***envp, char **tokens)
 		envs = convert_env_to_list(*envp);
 		print_exports(envs);
 		ft_free_list(envs);
+		envs = NULL;
 	}
 	else
 	{

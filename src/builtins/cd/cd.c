@@ -6,7 +6,7 @@
 /*   By: nnagel <nnagel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 11:36:13 by nnagel            #+#    #+#             */
-/*   Updated: 2024/07/30 20:05:30 by nnagel           ###   ########.fr       */
+/*   Updated: 2024/07/30 21:25:31 by nnagel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,31 @@ static void	set_oldpwd(char ***envp, char *oldpwd)
 	(*envp)[i] = ft_strjoin("OLDPWD=", oldpwd);
 }
 
+// static char	*ft_getenv(char **envp, char *var)
+// {
+// 	while (ft_strncmp(*envp, var, ft_strlen(var)))
+// 		envp++;
+// 	return (*envp);
+// }
+
+static char	*ft_getoldpwd(char **envp, char *var)
+{
+	while (ft_strncmp(*envp, var, ft_strlen(var)))
+		envp++;
+	return (*envp + 4);
+}
+
 int	cd(char ***envp, char *path)
 {
 	char	*alt_path;
 	char	*saned_path;
 	char	*oldpwd;
-	char	buffer[1024];
+	char	*buffer = malloc(sizeof(char) * 1024);
 
-	oldpwd = getenv("PWD");
+	oldpwd = ft_getoldpwd(*envp, "PWD");
+	ft_printf("%s\n", oldpwd);
 	if (ft_strcomp(path, "-"))
-		alt_path = ft_strdup(getenv("OLDPWD"));
+		alt_path = ft_strdup(oldpwd);
 	else if (ft_strcomp(path, "EOFToken"))
 		alt_path = ft_strdup(getenv("HOME"));
 	else if (path[0] == '~')
@@ -87,6 +102,7 @@ int	cd(char ***envp, char *path)
 	getcwd(buffer, 1024);
 	set_pwd(envp, buffer);
 	set_oldpwd(envp, oldpwd);
+	free(buffer);
 	free(alt_path);
 	return (0);
 }
