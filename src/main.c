@@ -41,7 +41,22 @@ static int	str_is_num(char *str)
 	return (1);
 }
 
-int	main(int argc, char **argv, char **envp)
+static char	**copy_env(char **envp)
+{
+	int		i;
+	char	**own_envs;
+
+	i = 0;
+	own_envs = malloc(sizeof(char *) * array_size(envp) * 1);
+	while (envp[i])
+	{
+		own_envs[i] = ft_strdup(envp[i]);
+		i++;
+	}
+	return (own_envs);
+}
+
+static void	ft_main(char **envp)
 {
 	int		ret;
 	char	*input;
@@ -49,9 +64,6 @@ int	main(int argc, char **argv, char **envp)
 
 	ret = 0;
 	input = NULL;
-	if (argc >= 2)
-		return (1);
-	(void)argv;
 	while (1)
 	{
 		input = readline(">> ");
@@ -84,5 +96,16 @@ int	main(int argc, char **argv, char **envp)
 			ret = export(envp, tokens);
 		free_tokens(tokens);
 	}
-	return (ret);
+}
+
+int	main(int argc, char **argv, char **envp)
+{
+	char	**envs;
+
+	if (argc >= 2)
+		return (1);
+	(void)argv;
+	envs = copy_env(envp);
+	ft_main(envs);
+	return (0);
 }
